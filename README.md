@@ -39,8 +39,8 @@ Aplicação web para organizar e controlar tarefas diárias com login seguro e i
 
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/) + Docker Compose
-- Python 3.11+ instalado (se não for usar Docker)
-- `pip` instalado (se for rodar localmente)
+- Python 3.11+ instalado 
+- `pip` instalado 
 
 ---
 
