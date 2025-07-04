@@ -9,7 +9,7 @@ Aplicação web para organizar e controlar tarefas diárias com login seguro e i
 ### 🖥️ Backend
 - [x] Django 5
 - [x] Django ORM
-- [x] SQLite (ou MySQL, se for o caso)
+- [x] SQLite 
 - [x] Django Admin
 
 ### 🎨 Frontend
