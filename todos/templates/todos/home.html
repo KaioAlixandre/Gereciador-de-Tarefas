@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block page_title %}Lista de Tarefas{% endblock page_title %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Lista de Tarefas</h1>
+
+{% if todo_list %}
+    <div class="overflow-x-auto mt-6">
+        <table class="min-w-full bg-white dark:bg-gray-800 rounded-xl shadow-md">
+            <thead>
+                <tr class="bg-blue-600 text-white">
+                    <th class="py-3 px-4 text-left">#</th>
+                    <th class="py-3 px-4 text-left">Título</th>
+                    <th class="py-3 px-4 text-left">Criado em</th>
+                    <th class="py-3 px-4 text-left">Prazo</th>
+                    <th class="py-3 px-4 text-left">Finalizado em</th>
+                    <th class="py-3 px-4 text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todo_list %}
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td class="py-2 px-4 text-white">{{ forloop.counter }}</td>
+                    <td class="py-2 px-4 text-white">{{ todo.title }}</td>
+                    <td class="py-2 px-4 text-white">{{ todo.created_at|date:"d/m/Y H:i" }}</td>
+                    <td class="py-2 px-4 text-white">{{ todo.deadline|date:"d/m/Y" }}</td>
+                    <td class="py-2 px-4 text-white">{{ todo.finished|date:"d/m/Y" }}</td>
+                    <td class="py-2 px-4 flex flex-wrap gap-2 justify-center">
+                        <form action="{% url 'finish' todo.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" {% if todo.finished %}disabled{% endif %}
+                                class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                                Concluir
+                            </button>
+                        </form>
+
+                        {% if not todo.finished %}
+                        <a href="{% url 'update' todo.id %}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded">
+                            Editar
+                        </a>
+                        {% else %}
+                        <span class="bg-yellow-300 text-white font-semibold py-1 px-3 rounded opacity-50 cursor-not-allowed">
+                            Editar
+                        </span>
+                        {% endif %}
+
+                        <a href="{% url 'delete' todo.id %}" class="text-red-500 hover:underline">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p class="text-gray-400">Nenhuma tarefa pendente.</p>
+{% endif %}
+
+<a href="{% url 'create' %}" class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow">
+    Criar Nova Tarefa
+</a>
+
+
+
+
+{% endblock content %}

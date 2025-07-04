@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Nova Tarefa{% endblock page_title %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Nova Tarefa</h1>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-sm transition duration-200">
+            Criar Tarefa
+        </button>
+    </form>
+{% endblock content %}
+       
