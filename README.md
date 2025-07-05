@@ -50,7 +50,7 @@ Clone o repositório:
 
 ```bash
 git clone https://github.com/KaioAlixanndre/TWTodos.git
-cd TWTodos
+cd Gerenciador-de-Tarefas
 ```
 
 Inicie a aplicação:
