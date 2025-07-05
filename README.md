@@ -66,8 +66,6 @@ docker-compose up --build
 - Acesse o sistema:  
   **http://localhost:8000/**
 
-- Documentação da API Swagger:  
-  **http://localhost:8000/swagger/**
 
 ---
 
